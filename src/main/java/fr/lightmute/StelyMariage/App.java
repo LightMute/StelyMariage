@@ -19,6 +19,7 @@ public class App extends JavaPlugin {
 		if(metric.isEnabled()) {
 			getLogger().log(Level.INFO, "Metric activé !");
 		}
+		//cmd
 		getCommand("mariage").setExecutor(new CmdMariage());
 	}
 	public void onDisable() {
