@@ -1,5 +1,7 @@
 package fr.lightmute.StelyMariage;
 
+import java.util.ArrayList;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -13,6 +15,7 @@ public class CmdMariage implements CommandExecutor {
 
 	Location locmarier = new Location(Bukkit.getWorld("Spawn"), 12, 64, 12);
 	Location loceglise = new Location(Bukkit.getWorld("Spawn"), 12, 64, 12);
+	ArrayList<String> joueurs = new ArrayList<String>();
 	Boolean mariageencours = false;
 	Boolean Teleportinvit = false;
 	String mariHomme = "";
@@ -32,6 +35,9 @@ public class CmdMariage implements CommandExecutor {
 				return true;
 			}else if(args[0].equalsIgnoreCase("participer") && mariageencours == true) {
 				if(Teleportinvit == true) {
+					if(!joueurs.contains(player.getName())) {
+						joueurs.add(player.getName());
+					}
 					player.teleport(loceglise, TeleportCause.COMMAND);
 				}else {
 					player.sendMessage(App.Prefix + " Le mariage est encore en préparation !");
@@ -50,9 +56,12 @@ public class CmdMariage implements CommandExecutor {
 					pls.playSound(pls.getLocation(), "clochemariage", 900.0F, 1.0F);
 				}
 				task = Bukkit.getScheduler().runTaskLater(App.instance, new Runnable() {
+					@SuppressWarnings("deprecation")
 					public void run() {
 						Bukkit.broadcastMessage(App.Prefix + args[0] + " ce mari avec " + args[1] + " Vous pouvez vous teleporter /mariage participer");
-						Bukkit.broadcastMessage(App.Prefix + "Le mariage commence dans 10 seconde !");
+						for(String pls : joueurs) {
+							Bukkit.getPlayer(pls).sendTitle("Mariage de " + mariFemme + " et " + mariHomme,"Le mariage commence dans 10 seconde !");
+						}
 						Teleportinvit = true;
 					}
 				}, 10 * 20L);
@@ -61,14 +70,26 @@ public class CmdMariage implements CommandExecutor {
 						for(Player pls : Bukkit.getOnlinePlayers()) {
 							if(pls.getName().equals(mariFemme)) {
 								pls.teleport(locmarier, TeleportCause.COMMAND);
+								pls.playSound(pls.getLocation(), "mariage1", 900.0F, 1.0F);
 							}
 							if(pls.getName().equals(mariHomme)) {
 								pls.teleport(locmarier, TeleportCause.COMMAND);
+								pls.playSound(pls.getLocation(), "mariage1", 900.0F, 1.0F);
 							}
-							pls.playSound(pls.getLocation(), "mariage", 900.0F, 1.0F);
+						}
+						for(String pls : joueurs) {
+							Bukkit.getPlayer(pls).playSound(Bukkit.getPlayer(pls).getLocation(), "mariage1", 900.0F, 1.0F);
 						}
 					}
 				}, 15 * 20L);
+				task = Bukkit.getScheduler().runTaskLater(App.instance, new Runnable() {
+					@SuppressWarnings("deprecation")
+					public void run() {
+						for(String pls : joueurs) {
+							Bukkit.getPlayer(pls).sendTitle("Mariage de " + mariFemme + " et " + mariHomme,"Fini");
+						}
+					}
+				}, 315 * 20L);
 				return true;
 
 			}else {
