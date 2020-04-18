@@ -13,8 +13,9 @@ import org.bukkit.scheduler.BukkitTask;
 
 public class CmdMariage implements CommandExecutor {
 
-	Location locmarier = new Location(Bukkit.getWorld("Spawn"), 12, 64, 12);
-	Location loceglise = new Location(Bukkit.getWorld("Spawn"), 12, 64, 12);
+	Location locmarierHomme = new Location(Bukkit.getWorld("eventkayno19"), 1728.5, 5, 167.5);
+	Location locmarierFemme = new Location(Bukkit.getWorld("eventkayno19"), 1728.5, 5, 161.5);
+	Location loceglise = new Location(Bukkit.getWorld("eventkayno19"), 1549.5, 4, 164.5);
 	ArrayList<String> joueurs = new ArrayList<String>();
 	Boolean mariageencours = false;
 	Boolean Teleportinvit = false;
@@ -69,11 +70,11 @@ public class CmdMariage implements CommandExecutor {
 					public void run() {
 						for(Player pls : Bukkit.getOnlinePlayers()) {
 							if(pls.getName().equals(mariFemme)) {
-								pls.teleport(locmarier, TeleportCause.COMMAND);
+								pls.teleport(locmarierFemme, TeleportCause.COMMAND);
 								pls.playSound(pls.getLocation(), "mariage1", 900.0F, 1.0F);
 							}
 							if(pls.getName().equals(mariHomme)) {
-								pls.teleport(locmarier, TeleportCause.COMMAND);
+								pls.teleport(locmarierHomme, TeleportCause.COMMAND);
 								pls.playSound(pls.getLocation(), "mariage1", 900.0F, 1.0F);
 							}
 						}
