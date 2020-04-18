@@ -18,7 +18,6 @@ public class CmdMariage implements CommandExecutor {
 	Location loceglise = new Location(Bukkit.getWorld("eventkayno19"), 1549.5, 4, 164.5);
 	ArrayList<String> joueurs = new ArrayList<String>();
 	Boolean mariageencours = false;
-	Boolean Teleportinvit = false;
 	String mariHomme = "";
 	String mariFemme = "";
 
@@ -40,18 +39,18 @@ public class CmdMariage implements CommandExecutor {
 				mariageencours = true;
 				Bukkit.getPlayer(mariFemme).teleport(loceglise, TeleportCause.COMMAND);
 				Bukkit.getPlayer(mariHomme).teleport(loceglise, TeleportCause.COMMAND);
-				player.sendMessage(App.Prefix + "Tu as 1 minute avant que les joueurs arrive !");
+				Bukkit.getPlayer(mariFemme).sendMessage(App.Prefix + "§aTu as 1 minute avant que les joueurs arrive !");
+				Bukkit.getPlayer(mariHomme).sendMessage(App.Prefix + "§aTu as 1 minute avant que les joueurs arrive !");
 				for(Player pls : Bukkit.getOnlinePlayers()) {
 					pls.playSound(pls.getLocation(), "clochemariage", 900.0F, 1.0F);
 				}
 				task = Bukkit.getScheduler().runTaskLater(App.instance, new Runnable() {
 					@SuppressWarnings("deprecation")
 					public void run() {
-						Bukkit.broadcastMessage(App.Prefix + args[0] + " ce mari avec " + args[1]);
+						Bukkit.broadcastMessage(App.Prefix + " §e" + args[0] + " §ase mari avec §e" + args[1]);
 						for(Player pls : Bukkit.getOnlinePlayers()) {
-							pls.sendTitle("Mariage de " + mariFemme + " et " + mariHomme,"Le mariage commence dans 30 seconde !");
+							pls.sendTitle("§e"+mariHomme + " §aet §e" + mariFemme,"§aLe mariage commence dans 30 seconde !");
 						}
-						Teleportinvit = true;
 					}
 				}, 30 * 20L);
 				task = Bukkit.getScheduler().runTaskLater(App.instance, new Runnable() {
@@ -80,7 +79,7 @@ public class CmdMariage implements CommandExecutor {
 					@SuppressWarnings("deprecation")
 					public void run() {
 						for(Player pls : Bukkit.getOnlinePlayers()) {
-							pls.sendTitle("Mariage de " + mariFemme + " et " + mariHomme,"Fini");
+							pls.sendTitle("§e"+mariHomme + " §aet §e" + mariFemme,"§aFini");
 						}
 					}
 				}, 360 * 20L);

@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class App extends JavaPlugin {
 	
-	public static String Prefix = "";
+	public static String Prefix = "§7[§5StelyMariage§7]";
 	public static Plugin instance;
 	
 	public void onEnable() {
