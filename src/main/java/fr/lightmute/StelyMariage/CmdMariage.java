@@ -79,7 +79,7 @@ public class CmdMariage implements CommandExecutor {
 
 			}else {
 				if(mariageencours == true) {
-					player.sendMessage(App.Prefix + " Un mariage est déjà en cours !");
+					player.sendMessage(App.Prefix + "§cUn mariage est déjà en cours !");
 					return true;
 				}
 			}
