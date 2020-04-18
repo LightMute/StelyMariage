@@ -2,7 +2,7 @@ name: StelyMariage
 version: 0.0.1-SNAPSHOT
 author: LightMute
 main: fr.lightmute.StelyMariage.App
-api-version: 1.15
+api-version: 1.14
 commands:
    mariage:
      description: faire un mariage.

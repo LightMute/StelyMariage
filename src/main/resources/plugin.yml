@@ -2,7 +2,7 @@ name: ${project.artifactId}
 version: ${project.version}
 author: LightMute
 main: ${project.groupId}.${project.artifactId}.App
-api-version: 1.15
+api-version: 1.14
 commands:
    mariage:
      description: faire un mariage.
