@@ -31,6 +31,7 @@ public class CmdMariage implements CommandExecutor {
 			BukkitTask task;
 
 			if(args.length == 0) {
+				//comandes
 				player.sendMessage(App.Prefix + " /mariage <pseudoHomme> <pseudoFemme>");
 				return true;
 			}else if(Bukkit.getPlayer(args[0]) != null && Bukkit.getPlayer(args[1]) != null && mariageencours == false) {
