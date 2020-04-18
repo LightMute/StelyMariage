@@ -14,7 +14,7 @@ public class App extends JavaPlugin {
 		
 		instance = this;
 		
-		Metrics metric = new Metrics(this, 1);
+		Metrics metric = new Metrics(this, 7213);
 		
 		if(metric.isEnabled()) {
 			getLogger().log(Level.INFO, "Metric activé !");
