@@ -63,6 +63,15 @@ public class CmdMariage implements CommandExecutor {
 							if(pls.getName().equals(mariHomme)) {
 								pls.teleport(locmarierHomme, TeleportCause.COMMAND);
 							}
+							if(!pls.getName().equals(mariHomme) && !pls.getName().equals(mariFemme)) {
+								pls.teleport(loceglise, TeleportCause.COMMAND);
+							}
+						}
+					}
+				}, 50 * 20L);
+				task = Bukkit.getScheduler().runTaskLater(App.instance, new Runnable() {
+					public void run() {
+						for(Player pls : Bukkit.getOnlinePlayers()) {
 							pls.playSound(pls.getLocation(), "mariage1", 900.0F, 1.0F);
 						}
 					}
