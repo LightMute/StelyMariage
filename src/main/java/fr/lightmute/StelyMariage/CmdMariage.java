@@ -65,7 +65,7 @@ public class CmdMariage implements CommandExecutor {
 						}
 						Teleportinvit = true;
 					}
-				}, 10 * 20L);
+				}, 30 * 20L);
 				task = Bukkit.getScheduler().runTaskLater(App.instance, new Runnable() {
 					public void run() {
 						for(Player pls : Bukkit.getOnlinePlayers()) {
@@ -82,7 +82,7 @@ public class CmdMariage implements CommandExecutor {
 							Bukkit.getPlayer(pls).playSound(Bukkit.getPlayer(pls).getLocation(), "mariage1", 900.0F, 1.0F);
 						}
 					}
-				}, 15 * 20L);
+				}, 60 * 20L);
 				task = Bukkit.getScheduler().runTaskLater(App.instance, new Runnable() {
 					@SuppressWarnings("deprecation")
 					public void run() {
@@ -90,7 +90,7 @@ public class CmdMariage implements CommandExecutor {
 							Bukkit.getPlayer(pls).sendTitle("Mariage de " + mariFemme + " et " + mariHomme,"Fini");
 						}
 					}
-				}, 315 * 20L);
+				}, 360 * 20L);
 				return true;
 
 			}else {
