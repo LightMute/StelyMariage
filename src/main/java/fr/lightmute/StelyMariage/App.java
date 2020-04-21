@@ -13,7 +13,7 @@ public class App extends JavaPlugin {
 	public void onEnable() {
 		
 		instance = this;
-		
+		//metric
 		Metrics metric = new Metrics(this, 7213);
 		
 		if(metric.isEnabled()) {
